@@ -1,0 +1,67 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+	
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+
+	<link rel="stylesheet"
+		th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+		href="/webjars/bootstrap/3.2.0/css/bootstrap.css" />
+<!-- 	
+	<link rel="stylesheet"
+		th:href="@{/bootstrap3/bootstrap-table/bootstrap-table.css}"
+		href="bootstrap3/bootstrap-table/bootstrap-table.css" />
+-->		
+	
+	<script type="text/javascript"  th:src="@{webjars/jquery/1.11.1/jquery.min.js}"></script>
+<!-- 	
+	<script type="text/javascript"  th:src="@{/bootstrap3/bootstrap-table/bootstrap-table.js}"></script>
+	<script type="text/javascript"  th:src="@{/bootstrap3/bootstrap-table/bootstrap-table-zh-CN.js}"></script>
+	<script type="text/javascript"  th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+	<script type="text/javascript"  th:src="@{/utils.js}"></script>
+-->
+	<script type="text/javascript"  th:src="@{/bootstrap3/js/bootstrap-treeview.js}"></script>
+	
+</head>
+<body>
+   
+   <div id="tree"></div>
+
+<!-- thymeleaf 中自定义结束方法 -->    
+<script type="text/javascript">
+/*<![CDATA[*/ 
+	
+	$(function getTree(){
+		
+		$.ajax({
+			   type: "POST",
+			   url: "/showData",
+			   dataType: 'json',
+			   success: function(data){
+			    /*  console.log( data ); */
+				$('#tree').treeview({data: data,
+									href: "/nodeuser"
+/* 									  color:"#000000",
+									  backColor:"#FFFFFF", 
+									  selectable:true,
+									  state: {
+									    checked:true,
+									    disabled:true,
+									    expanded:true,
+									    selected:true
+									  },
+									  tags: ['available'],*/
+									  });
+			   						}
+			});
+	});
+		
+	    
+	/*]]>*/	
+</script>
+    
+</body>
+</html>

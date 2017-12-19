@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="/css/reset.css" />
+<link rel="stylesheet" href="/css/function.css" />
+<link rel="stylesheet" href="/css/login.css" />
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+
+	 <div class="g-doc">
+		<div class="logo">
+			<img src="img/login_logo.png" />
+		</div>
+		<div class="loginbox">
+			<div class="logintitle">
+				<select id="serviceProvider">
+				    <option value="1"> 曙光/腾讯云平台 </option>
+					<option value="0">太极云平台 </option>
+					<option value="2">华为云平台</option>
+					</select>
+			</div>
+			<div class="loginwrap" id="loginwrap">
+				<form role="form" id="form-wizard" action="login" method="POST">
+					<label>用户名<span>/ USERNAME</span></label> 
+					<input type="text" name="username" /> 
+					<label>密码<span>/ PASSWORD</span></label> 
+					<input type="password" name="password" />
+					
+					<button type="submit" class="btn-login mg-b4">登录</button>
+				    
+				</form>
+
+			</div>
+			
+			
+		</div>
+	</div>
+
+	<script>
+		/*<![CDATA[*/
+
+		//如果有选择操作
+		$("select#serviceProvider").change(function() {
+			defaultValue();
+
+		});
+        var isH3 = false;
+        var isTencent = false;
+		function defaultValue() {
+			var selectText = $("#serviceProvider").find("option:selected")
+					.text();
+			var selectValue = $("#serviceProvider").find("option:selected")
+					.val();
+			if (selectValue == 0) {
+			
+				isH3 = true;
+				
+				$("#loginwrap").load('toH3c');
+				$("#form-wizard").hide();
+			}
+			if (selectValue == 1) {
+				//var url4='http://10.0.32.46:8080/oauth/authorize?response_type=code&client_id=client&redirect_uri=http%3A%2F%2F10.0.32.46%3A8088%2Foauth%2Ftj%2Fcallback&state=ss&scope=app';
+				
+				var url5='http://10.0.32.46:8080/oauth/authorize?response_type=code&client_id=clientB&redirect_uri=http%3A%2F%2F10.0.32.46%3A8088';
+				
+				
+				//var url6='http://14.27.128.19:8080/login?response_type=code&client_id=client-t&scope=write&state=Crszr0&redirect_uri=http://sip.cloud.local';
+				
+				
+				var url7 ='http://passport.smebj.cn:9999/login?response_type=code&client_id=client-t&scope=app&state=Crszr0&redirect_uri=http://localhost.oa.com';
+				window.open(url7, '_self');
+				
+				
+				//$("#loginwrap").load();
+				
+				
+				isTencent=true;
+				
+			}
+			
+			if(selectValue == 2){
+				
+			}
+		};
+
+		
+		/*]]>*/
+	</script>
+	
+	
+<script type="text/javascript" src="/js/util.js"></script>
+<script type="text/javascript" src="/js/jquery.SuperSlide.2.1.1.js"></script>
+</body>
+
+</html>
